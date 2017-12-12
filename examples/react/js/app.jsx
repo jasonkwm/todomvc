@@ -47,11 +47,20 @@ var app = app || {};
 			event.preventDefault();
 
 			var val = this.state.newTodo.trim();
+			var todos = this.props.model.todos;
+			var mapping = todos.map( (todo)=>{
+				return	todo.title.toLowerCase();
+			});
 
-			if (val) {
-				this.props.model.addTodo(val);
-				this.setState({newTodo: ''});
-			}
+				if(mapping.indexOf(val.toLowerCase()) === -1){
+					this.props.model.addTodo(val);
+					this.setState({newTodo: ''});
+				} else {
+					alert("Cannot Add Same Item");
+				}
+			
+			
+
 		},
 
 		toggleAll: function (event) {
@@ -124,6 +133,7 @@ var app = app || {};
 			if (activeTodoCount || completedCount) {
 				footer =
 					<TodoFooter
+						total={todos.length}
 						count={activeTodoCount}
 						completedCount={completedCount}
 						nowShowing={this.state.nowShowing}

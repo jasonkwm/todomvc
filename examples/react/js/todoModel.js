@@ -29,9 +29,14 @@ var app = app || {};
 	};
 
 	app.TodoModel.prototype.addTodo = function (title) {
+		let d = new Date();
+		let time = d.toLocaleTimeString().toString();
+		let date = d.getTime();
 		this.todos = this.todos.concat({
 			id: Utils.uuid(),
 			title: title,
+			time:time,
+			date:date,
 			completed: false
 		});
 
@@ -72,6 +77,7 @@ var app = app || {};
 		this.todos = this.todos.map(function (todo) {
 			return todo !== todoToSave ? todo : Utils.extend({}, todo, {title: text});
 		});
+
 
 		this.inform();
 	};

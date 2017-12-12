@@ -26,6 +26,7 @@ var app = app || {};
 		},
 
 		store: function (namespace, data) {
+			
 			if (data) {
 				return localStorage.setItem(namespace, JSON.stringify(data));
 			}

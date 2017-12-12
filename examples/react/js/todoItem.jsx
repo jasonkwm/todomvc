@@ -89,8 +89,9 @@ var app = app || {};
 							onChange={this.props.onToggle}
 						/>
 						<label onDoubleClick={this.handleEdit}>
-							{this.props.todo.title}
+							{this.props.todo.title} <span className="time">{this.props.todo.time}</span>
 						</label>
+						
 						<button className="destroy" onClick={this.props.onDestroy} />
 					</div>
 					<input
