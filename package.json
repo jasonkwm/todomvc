@@ -16,7 +16,8 @@
     "npm": "5.6.0"
   },
   "scripts": {
-    "start": "server.js",
+    "start": "node server.js",
+    "postinstall": "gulp default",
     "test-server": "gulp test-server &",
     "gulp": "gulp"
   },
