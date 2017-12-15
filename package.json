@@ -16,6 +16,7 @@
     "npm": "5.6.0"
   },
   "scripts": {
+    "start": "server.js",
     "test-server": "gulp test-server &",
     "gulp": "gulp"
   },
