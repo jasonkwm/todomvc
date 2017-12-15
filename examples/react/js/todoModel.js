@@ -31,7 +31,7 @@ var app = app || {};
 	app.TodoModel.prototype.addTodo = function (title) {
 		let d = new Date();
 		let time = d.toLocaleTimeString().toString();
-		let date = d.getTime();
+		let date = d.getTime().toString();
 		this.todos = this.todos.concat({
 			id: Utils.uuid(),
 			title: title,
@@ -89,5 +89,7 @@ var app = app || {};
 
 		this.inform();
 	};
+
+
 
 })();

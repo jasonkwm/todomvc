@@ -53,6 +53,14 @@ var app = app || {};
 									Completed
 							</a>
 						</li>
+						{' '}
+						<li>
+						<button
+							className="sort-todo"
+							onClick={this.props.sortDate}>
+							Time
+						</button>
+						</li>
 					</ul>
 					{clearButton}
 				</footer>

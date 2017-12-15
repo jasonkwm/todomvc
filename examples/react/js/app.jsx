@@ -93,10 +93,14 @@ var app = app || {};
 			this.props.model.clearCompleted();
 		},
 
+		
+			  
+
 		render: function () {
 			var footer;
 			var main;
 			var todos = this.props.model.todos;
+
 
 			var shownTodos = todos.filter(function (todo) {
 				switch (this.state.nowShowing) {
@@ -108,6 +112,35 @@ var app = app || {};
 					return true;
 				}
 			}, this);
+
+			var sortTodos = function (){
+
+				function ascend(a,b) {
+					if (a.date < b.date)
+					  return -1;
+					if (a.date > b.date)
+					  return 1;
+					return 0;
+				  }
+				
+				function decend(a,b) {
+					if (a.date < b.date)
+					  return 1;
+					if (a.date > b.date)
+					  return -1;
+					return 0;
+				}
+
+				var sorting = document.getElementById("sorting");
+		
+				if (sorting.sort(ascend)) {
+					return sorting.sort(decend); 
+				   } else {
+					return sorting.sort(ascend); 
+				   }
+
+				  
+			}
 
 			var todoItems = shownTodos.map(function (todo) {
 				return (
@@ -138,6 +171,7 @@ var app = app || {};
 						completedCount={completedCount}
 						nowShowing={this.state.nowShowing}
 						onClearCompleted={this.clearCompleted}
+						sortDate={sortTodos}
 					/>;
 			}
 
@@ -150,7 +184,7 @@ var app = app || {};
 							onChange={this.toggleAll}
 							checked={activeTodoCount === 0}
 						/>
-						<ul className="todo-list">
+						<ul className="todo-list" id="sorting">
 							{todoItems}
 						</ul>
 					</section>

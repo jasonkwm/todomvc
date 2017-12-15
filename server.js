@@ -20,3 +20,5 @@ Object.defineProperty(module.exports, 'learnJson', {
 		});
 	}
 });
+
+app.listen(process.env.PORT);
